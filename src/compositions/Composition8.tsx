@@ -2,6 +2,7 @@
 import { AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, interpolate } from 'remotion';
 
 //* Components imports
+import Background from '../components/Background';
 import { Logo } from '../components/Logo';
 import { Title } from '../components/Title';
 import Subtitle from '../components/Subtitle';
@@ -31,7 +32,7 @@ export default function Composition3(props: Props) {
 
 	return (
 		<AbsoluteFill className="items-center justify-center">
-			<div className='relative flex flex-col items-center justify-center w-full h-full'>
+			<Background>
 
 				<PersonImage
 					startFrame={20}
@@ -47,7 +48,7 @@ export default function Composition3(props: Props) {
 					showFrame={20}
 					desappearFrame={220}
 				>
-					Nossa equipe de paisagistas, jardineros, consultores de vendas e profissionais de marketing trabalha em uníssono para superar as expectativas dos clientes.
+					Tudo começou com a paixão de um homem, Daniel Rodrigues, que viu a beleza na simplicidade da natureza.
 				</Subtitle>
 				<Audio
 					src={staticFile('voice2.mp3')}
@@ -55,7 +56,7 @@ export default function Composition3(props: Props) {
 					endAt={240}
 					volume={0.5}
 				/>
-			</div>
+			</Background>
 		</AbsoluteFill>
 	);
 };

@@ -2,6 +2,7 @@
 import { AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, interpolate } from 'remotion';
 
 //* Components imports
+import Background from '../components/Background';
 import { Logo } from '../components/Logo';
 import { Title } from '../components/Title';
 import Subtitle from '../components/Subtitle';
@@ -31,7 +32,7 @@ export default function Composition3(props: Props) {
 
 	return (
 		<AbsoluteFill className="items-center justify-center">
-			<div className='relative flex flex-col items-center justify-center w-full h-full'>
+			<Background>
 
 				<PersonImage
 					startFrame={20}
@@ -55,7 +56,7 @@ export default function Composition3(props: Props) {
 					endAt={240}
 					volume={0.5}
 				/>
-			</div>
+			</Background>
 		</AbsoluteFill>
 	);
 };
