@@ -42,13 +42,26 @@ export default function Composition3(props: Props) {
 					proportion={[3, 4]}
 					width={1060 * 0.8}
 					height={707 * 0.8}
+					positionAnimation
+					startPosition={{
+						x: 200,
+						y: 0
+					}}
+					endPosition={{
+						x: 200,
+						y: 300
+					}}
+					startScale={0.8}
+					endScale={1.1}
+					endRotation={-2}
+					startRotation={-10}
 				/>
 
 				<Subtitle
 					showFrame={20}
 					desappearFrame={220}
 				>
-					Tudo começou com a paixão de um homem, Daniel Rodrigues, que viu a beleza na simplicidade da natureza.
+					Nossa missão é criar ambientes verdes harmoniosos, promovendo a conexão com a natureza e tornando os sonhos de nossos clientes uma realidade.
 				</Subtitle>
 				<Audio
 					src={staticFile('voice2.mp3')}

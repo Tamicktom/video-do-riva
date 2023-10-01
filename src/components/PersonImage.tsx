@@ -4,6 +4,26 @@ import { Img, staticFile, interpolate, useCurrentFrame } from "remotion";
 //* local imports
 import { screen } from "../utils/variables";
 
+type AnimationProps = {
+  path: string;
+  width: number;
+  height: number;
+  proportion: [number, number]
+  legend: string;
+  startFrame: number;
+  endFrame: number;
+
+  positionAnimation: true;
+  startPosition?: {
+    x: number;
+    y: number;
+  };
+  endPosition?: {
+    x: number;
+    y: number;
+  };
+}
+
 type Props = {
   path: string;
   width: number;
@@ -12,6 +32,25 @@ type Props = {
   legend: string;
   startFrame: number;
   endFrame: number;
+
+  position?: {
+    x: number;
+    y: number;
+  };
+
+  positionAnimation?: boolean;
+  startPosition?: {
+    x: number;
+    y: number;
+  };
+  endPosition?: {
+    x: number;
+    y: number;
+  };
+  startRotation?: number;
+  endRotation?: number;
+  startScale?: number;
+  endScale?: number;
 }
 
 export default function PersonImage(props: Props) {
@@ -21,10 +60,50 @@ export default function PersonImage(props: Props) {
   const width = props.width * props.proportion[0] / props.proportion[1];
   const height = props.height * props.proportion[1] / props.proportion[0];
 
-  const fromBottomToCenter = interpolate(
+  const startFrom = {
+    x: props.startPosition?.x ?? screen.width * 0.5 - width * 0.5,
+    y: props.startPosition?.y ?? screen.height * 0.12,
+  }
+
+  const endAt = {
+    x: props.endPosition?.x ?? screen.width * 0.5 - width * 0.5,
+    y: props.endPosition?.y ?? screen.height * 0.2,
+  }
+
+  const bottomAnimation = interpolate(
     frame,
     [props.startFrame, props.endFrame],
-    [screen.height * 0.12, screen.height * 0.2],
+    [startFrom.y, endAt.y],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }
+  );
+
+  const leftAnimation = interpolate(
+    frame,
+    [props.startFrame, props.endFrame],
+    [startFrom.x, endAt.x],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }
+  );
+
+  const rotation = interpolate(
+    frame,
+    [props.startFrame, props.endFrame],
+    [props.startRotation ?? 0, props.endRotation ?? 0],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    }
+  );
+
+  const scale = interpolate(
+    frame,
+    [props.startFrame, props.endFrame],
+    [props.startScale ?? 1, props.endScale ?? 1],
     {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
@@ -48,15 +127,17 @@ export default function PersonImage(props: Props) {
       style={{
         width: width,
         height: height,
-        bottom: fromBottomToCenter,
+        bottom: bottomAnimation,
+        left: leftAnimation,
         opacity: opacity,
+        transform: `rotate(${rotation}deg) scale(${scale})`,
       }}
     >
       <Img
         src={staticFile(props.path)}
         className="object-cover w-full h-full border-8 rounded-2xl border-neutral-300"
       />
-      <div className="w-full p-4 bg-opacity-50">
+      <div className="w-full pt-2 bg-opacity-50">
         <p className="text-6xl font-bold text-center text-black">{props.legend}</p>
       </div>
     </div>
