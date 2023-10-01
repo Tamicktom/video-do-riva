@@ -34,7 +34,7 @@ export default function Composition3(props: Props) {
 			<div className='relative flex flex-col items-center justify-center w-full h-full'>
 
 				<PersonImage
-					startFrame={100}
+					startFrame={20}
 					endFrame={150}
 					path={'daniel_rodrigues.jpg'}
 					legend='Daniel Rodrigues'

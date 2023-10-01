@@ -16,10 +16,15 @@ export default function Subtitle(props: Props) {
 
   const charCount = props.children.toString().length;
 
-  const opacity = interpolate(frame, [props.showFrame, props.showFrame + 1, props.desappearFrame - 1, props.desappearFrame], [0, 1, 1, 0], {
-    extrapolateLeft: 'clamp',
-    extrapolateRight: 'clamp',
-  });
+  const opacity = interpolate(
+    frame,
+    [props.showFrame, props.showFrame + 1, props.desappearFrame - 1, props.desappearFrame],
+    [0, 1, 1, 0],
+    {
+      extrapolateLeft: 'clamp',
+      extrapolateRight: 'clamp',
+    }
+  );
 
   return (
     <div className="absolute bottom-0 left-0 z-10 flex items-center justify-center w-full h-40">

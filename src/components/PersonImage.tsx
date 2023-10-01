@@ -33,8 +33,8 @@ export default function PersonImage(props: Props) {
 
   const opacity = interpolate(
     frame,
-    [props.startFrame, props.startFrame + screen.fps * 0.3], //fade in
-    [0, 1],
+    [props.startFrame, props.startFrame + screen.fps * 0.3, props.endFrame - screen.fps * 0.3, props.endFrame], //fade in
+    [0, 1, 1, 0],
     {
       easing: (x) => x ** 2,
       extrapolateLeft: "clamp",
@@ -56,7 +56,7 @@ export default function PersonImage(props: Props) {
         src={staticFile(props.path)}
         className="object-cover w-full h-full border-8 rounded-2xl border-neutral-300"
       />
-      <div className="w-full p-4 bg-white bg-opacity-50">
+      <div className="w-full p-4 bg-opacity-50">
         <p className="text-6xl font-bold text-center text-black">{props.legend}</p>
       </div>
     </div>
