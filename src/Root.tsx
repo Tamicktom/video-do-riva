@@ -2,7 +2,8 @@
 import { Composition } from 'remotion';
 
 //* Local imports
-import { screen } from './utils/variables';
+import { screen } from './utils/variables'; // screen size variables, width, height and fps
+
 import Composition1 from './compositions/Composition1';
 import Composition2 from './compositions/Composition2';
 import Composition3 from './compositions/Composition3';
@@ -22,7 +23,7 @@ export function RemotionRoot() {
 			<Composition
 				id="comp1"
 				component={Composition1}
-				durationInFrames={200} // 5 minutes
+				durationInFrames={200} // 200 frames = 5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
@@ -30,7 +31,7 @@ export function RemotionRoot() {
 			<Composition
 				id="comp2"
 				component={Composition2}
-				durationInFrames={240} // 5 minutes
+				durationInFrames={240} // 240 frames = 6 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
@@ -38,63 +39,63 @@ export function RemotionRoot() {
 			<Composition
 				id="comp3"
 				component={Composition3}
-				durationInFrames={180} // 5 minutes
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
 			/>
 			<Composition
 				id="comp4"
-				component={Composition1}
-				durationInFrames={180} // 5 minutes
+				component={Composition4}
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
 			/>
 			<Composition
 				id="comp5"
-				component={Composition1}
-				durationInFrames={180} // 5 minutes
+				component={Composition5}
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
 			/>
 			<Composition
 				id="comp6"
-				component={Composition1}
-				durationInFrames={180} // 5 minutes
+				component={Composition6}
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
 			/>
 			<Composition
 				id="comp7"
-				component={Composition1}
-				durationInFrames={180} // 5 minutes
+				component={Composition7}
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
 			/>
 			<Composition
 				id="comp8"
-				component={Composition1}
-				durationInFrames={180} // 5 minutes
+				component={Composition8}
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
 			/>
 			<Composition
 				id="comp9"
-				component={Composition1}
-				durationInFrames={180} // 5 minutes
+				component={Composition9}
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
 			/>
 			<Composition
 				id="comp10"
-				component={Composition1}
-				durationInFrames={180} // 5 minutes
+				component={Composition10}
+				durationInFrames={180} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}
