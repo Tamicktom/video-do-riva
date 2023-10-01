@@ -24,6 +24,7 @@
     "@remotion/bundler": "4.0.43",
     "@remotion/cli": "4.0.43",
     "@remotion/zod-types": "4.0.43",
+    "jotai": "^2.4.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "remotion": "4.0.43",
@@ -31,11 +32,11 @@
   },
   "devDependencies": {
     "@remotion/eslint-config": "4.0.43",
+    "@remotion/tailwind": "4.0.43",
     "@types/react": "^18.0.26",
     "@types/web": "^0.0.86",
     "eslint": "^8.43.0",
     "prettier": "^2.8.8",
-    "@remotion/tailwind": "4.0.43",
     "typescript": "^4.9.4"
   },
   "packageManager": "pnpm@8.5.0"
