@@ -1,5 +1,5 @@
 //* Libraries imports
-import { AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, interpolate } from 'remotion';
+import { AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, interpolate, random } from 'remotion';
 
 //* Components imports
 import Background from '../components/Background';
@@ -35,10 +35,10 @@ export default function Composition3(props: Props) {
 			<Background>
 
 				<PersonImage
-					startFrame={20}
-					endFrame={150}
-					path={'daniel_rodrigues.jpg'}
-					legend='Daniel Rodrigues'
+					startFrame={0}
+					endFrame={180}
+					path={'garden2.jpg'}
+					legend=''
 					proportion={[3, 4]}
 					width={1060 * 0.8}
 					height={707 * 0.8}
@@ -55,6 +55,52 @@ export default function Composition3(props: Props) {
 					endScale={1.1}
 					endRotation={-2}
 					startRotation={-10}
+				/>
+
+				<PersonImage
+					startFrame={0}
+					endFrame={180}
+					path={'garden3.jpg'}
+					legend=''
+					proportion={[1, 1]}
+					width={1060 * 0.8}
+					height={707 * 0.8}
+					positionAnimation
+					startPosition={{
+						x: 200 * (random(1) + 3),
+						y: -500 * (random(1) + 1)
+					}}
+					endPosition={{
+						x: 200 * (random(1) + 3),
+						y: 300 - (random(1) + 300)
+					}}
+					startScale={random(1) + 0.8}
+					endScale={random(1) + 1.1}
+					endRotation={random(1) - 2}
+					startRotation={random(1) - 10}
+				/>
+
+				<PersonImage
+					startFrame={0}
+					endFrame={180}
+					path={'garden4.jpg'}
+					legend=''
+					proportion={[1, 1]}
+					width={1060 * 0.8}
+					height={707 * 0.8}
+					positionAnimation
+					startPosition={{
+						x: 400 * (random(1) + 3),
+						y: -100 * (random(1) + 1)
+					}}
+					endPosition={{
+						x: 200 * (random(1) + 3),
+						y: 600 - (random(1) + 300)
+					}}
+					startScale={random(1) + 0.8}
+					endScale={random(1) + 1.1}
+					endRotation={random(1) - 2}
+					startRotation={random(1) - 10}
 				/>
 
 				<Subtitle
