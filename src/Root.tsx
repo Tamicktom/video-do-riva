@@ -47,7 +47,7 @@ export function RemotionRoot() {
 			<Composition
 				id="comp4"
 				component={Composition4}
-				durationInFrames={180} // 180 frames = 4.5 seconds
+				durationInFrames={280} // 180 frames = 4.5 seconds
 				fps={screen.fps}
 				width={screen.width}
 				height={screen.height}

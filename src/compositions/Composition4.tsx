@@ -85,7 +85,7 @@ export default function Composition3(props: Props) {
 							return (
 								<PersonImage
 									startFrame={0}
-									endFrame={180}
+									endFrame={280}
 									path={image.path}
 									legend=''
 									proportion={image.proportion}
@@ -106,7 +106,7 @@ export default function Composition3(props: Props) {
 
 				<Subtitle
 					showFrame={20}
-					desappearFrame={220}
+					desappearFrame={280}
 				>
 					Nossa missão é criar ambientes verdes harmoniosos, promovendo a conexão com a natureza e tornando os sonhos de nossos clientes uma realidade.
 				</Subtitle>
@@ -118,9 +118,9 @@ export default function Composition3(props: Props) {
 				/>
 
 				<Audio
-					src={staticFile('voice2.mp3')}
+					src={staticFile('voice4.mp3')}
 					startFrom={0}
-					endAt={240}
+					endAt={280}
 					volume={0.5}
 				/>
 			</Background>
