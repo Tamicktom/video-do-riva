@@ -1,10 +1,11 @@
 //* Libraries imports
-import { AbsoluteFill, Audio, staticFile, random } from 'remotion';
+import { AbsoluteFill, Audio, staticFile, random, useCurrentFrame } from 'remotion';
 
 //* Components imports
 import Background from '../components/Background';
 import Subtitle from '../components/Subtitle';
 import PersonImage from '../components/PersonImage';
+import Flowers from '../components/Flowers';
 
 //* Local imports
 import { screen } from '../utils/variables';
@@ -18,6 +19,8 @@ type Props = {
 }
 
 export default function Composition3(props: Props) {
+	const frame = useCurrentFrame();
+
 	const images: Image[] = [
 		{
 			path: 'garden1.jpg',
@@ -107,6 +110,13 @@ export default function Composition3(props: Props) {
 				>
 					Nossa missão é criar ambientes verdes harmoniosos, promovendo a conexão com a natureza e tornando os sonhos de nossos clientes uma realidade.
 				</Subtitle>
+
+				<Flowers
+					frame={frame}
+					start={0}
+					end={15}
+				/>
+
 				<Audio
 					src={staticFile('voice2.mp3')}
 					startFrom={0}

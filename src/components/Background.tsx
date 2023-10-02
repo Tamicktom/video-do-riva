@@ -1,10 +1,11 @@
 //* Libraries imports
+import { Img, staticFile } from "remotion";
 import type { ReactNode } from "react";
 
 
 //* Local imports
 import useTheme from "../hooks/useTheme";
-import { colors } from "../utils/variables";
+import { colors, screen } from "../utils/variables";
 
 type Props = {
   children: ReactNode;
@@ -21,6 +22,18 @@ export default function Background(props: Props) {
         color: theme === 'dark' ? colors[50] : colors[900],
       }}
     >
+      <Img
+        src={
+          staticFile(
+            theme === "dark"
+              ? "flowers-background-black.webp"
+              : "flowers-background-white.webp"
+          )
+        }
+        width={screen.width}
+        height={screen.height}
+        className="absolute top-0 left-0 z-0 w-full h-full scale-110 blur-2xl"
+      />
       {props.children}
     </div>
   );
