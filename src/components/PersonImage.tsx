@@ -1,5 +1,5 @@
 //* Libraries imports
-import { Img, staticFile, interpolate, useCurrentFrame } from "remotion";
+import { Img, staticFile, interpolate, useCurrentFrame, Easing } from "remotion";
 
 //* local imports
 import { screen } from "../utils/variables";
@@ -61,13 +61,13 @@ export default function PersonImage(props: Props) {
   const height = props.height * props.proportion[1] / props.proportion[0];
 
   const startFrom = {
-    x: props.startPosition?.x ?? screen.width * 0.5 - width * 0.5,
-    y: props.startPosition?.y ?? screen.height * 0.12,
+    x: props.startPosition?.x ? props.startPosition.x : screen.width * 0.5 - width * 0.5,
+    y: props.startPosition?.y ? props.startPosition.y : screen.height * 0.12,
   }
 
   const endAt = {
-    x: props.endPosition?.x ?? screen.width * 0.5 - width * 0.5,
-    y: props.endPosition?.y ?? screen.height * 0.2,
+    x: props.endPosition?.x ? props.endPosition.x : screen.width * 0.5 - width * 0.5,
+    y: props.endPosition?.y ? props.endPosition.y : screen.height * 0.2,
   }
 
   const bottomAnimation = interpolate(
@@ -75,6 +75,7 @@ export default function PersonImage(props: Props) {
     [props.startFrame, props.endFrame],
     [startFrom.y, endAt.y],
     {
+      easing: Easing.bezier(0.5, 0, 0.5, 1),
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }
@@ -85,6 +86,7 @@ export default function PersonImage(props: Props) {
     [props.startFrame, props.endFrame],
     [startFrom.x, endAt.x],
     {
+      easing: Easing.bezier(0.5, 0, 0.5, 1),
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }
@@ -95,6 +97,7 @@ export default function PersonImage(props: Props) {
     [props.startFrame, props.endFrame],
     [props.startRotation ?? 0, props.endRotation ?? 0],
     {
+      easing: Easing.bezier(0.5, 0, 0.5, 1),
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }
@@ -105,6 +108,7 @@ export default function PersonImage(props: Props) {
     [props.startFrame, props.endFrame],
     [props.startScale ?? 1, props.endScale ?? 1],
     {
+      easing: Easing.bezier(0.5, 0, 0.5, 1),
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }
@@ -115,7 +119,7 @@ export default function PersonImage(props: Props) {
     [props.startFrame, props.startFrame + screen.fps * 0.3, props.endFrame - screen.fps * 0.3, props.endFrame], //fade in
     [0, 1, 1, 0],
     {
-      easing: (x) => x ** 2,
+      easing: Easing.bezier(0.5, 0, 0.5, 1),
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
     }
@@ -123,7 +127,7 @@ export default function PersonImage(props: Props) {
 
   return (
     <div
-      className="absolute flex flex-col items-center justify-center px-8 py-8 overflow-hidden bg-white border-8 border-neutral-300 w-fit h-fit rounded-2xl"
+      className="absolute flex flex-col items-center justify-center px-4 py-4 overflow-hidden bg-white border-4 border-neutral-300 w-fit h-fit rounded-2xl"
       style={{
         width: width,
         height: height,
@@ -135,7 +139,7 @@ export default function PersonImage(props: Props) {
     >
       <Img
         src={staticFile(props.path)}
-        className="object-cover w-full h-full border-8 rounded-2xl border-neutral-300"
+        className="object-cover w-full h-full border-4 rounded-2xl border-neutral-300"
       />
       <div className="w-full pt-2 bg-opacity-50">
         <p className="text-6xl font-bold text-center text-black">{props.legend}</p>

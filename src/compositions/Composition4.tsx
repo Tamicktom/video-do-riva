@@ -1,107 +1,105 @@
 //* Libraries imports
-import { AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, interpolate, random } from 'remotion';
+import { AbsoluteFill, Audio, staticFile, random } from 'remotion';
 
 //* Components imports
 import Background from '../components/Background';
-import { Logo } from '../components/Logo';
-import { Title } from '../components/Title';
 import Subtitle from '../components/Subtitle';
 import PersonImage from '../components/PersonImage';
 
 //* Local imports
-import useTheme from '../hooks/useTheme';
+import { screen } from '../utils/variables';
+
+type Image = {
+	path: string;
+	proportion: [number, number];
+}
 
 type Props = {
 }
 
 export default function Composition3(props: Props) {
-	const theme = useTheme();
-	const isDark = theme === 'dark';
-	const frame = useCurrentFrame();
-
-	const blur = interpolate(frame, [0, 20, 130, 200], [0, 16, 16, 80], {
-		easing: (x) => x ** 2,
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
-
-	const zoom = interpolate(frame, [130, 200], [1.1, 2], {
-		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-	});
+	const images: Image[] = [
+		{
+			path: 'garden1.jpg',
+			proportion: [1, 1],
+		},
+		{
+			path: 'garden2.jpg',
+			proportion: [1, 1],
+		},
+		{
+			path: 'garden3.jpg',
+			proportion: [1, 1],
+		},
+		{
+			path: 'garden4.jpg',
+			proportion: [1, 1],
+		},
+		{
+			path: 'garden5.jpg',
+			proportion: [1, 1],
+		},
+		{
+			path: 'garden6.jpg',
+			proportion: [1, 1],
+		},
+		{
+			path: 'garden7.jpg',
+			proportion: [1, 1],
+		},
+		{
+			path: 'garden8.jpg',
+			proportion: [1, 1],
+		},
+	]
 
 	return (
 		<AbsoluteFill className="items-center justify-center">
 			<Background>
 
-				<PersonImage
-					startFrame={0}
-					endFrame={180}
-					path={'garden2.jpg'}
-					legend=''
-					proportion={[3, 4]}
-					width={1060 * 0.8}
-					height={707 * 0.8}
-					positionAnimation
-					startPosition={{
-						x: 200,
-						y: 0
-					}}
-					endPosition={{
-						x: 200,
-						y: 300
-					}}
-					startScale={0.8}
-					endScale={1.1}
-					endRotation={-2}
-					startRotation={-10}
-				/>
+				<div className='relative flex items-center justify-center w-full h-full'>
+					{
+						images.map((image, index) => {
+							const scale = {
+								start: 0.6,
+								end: 0.7
+							}
+							const negative = random(index + 3) > 0.5 ? 1 : -1;
+							const isPair = index % 2 === 0;
+							const rotation = {
+								start: random(index + 3) * 12 * negative,
+								end: random(index + 4) * 12
+							}
+							const startPosition = {
+								x: ((index + 1) * 100) - 220,
+								y: isPair ? -50 : 400
+							}
+							const endPosition = {
+								x: ((index + 1) * 180) - 220,
+								y: isPair ? -50 : 400
+							}
 
-				<PersonImage
-					startFrame={0}
-					endFrame={180}
-					path={'garden3.jpg'}
-					legend=''
-					proportion={[1, 1]}
-					width={1060 * 0.8}
-					height={707 * 0.8}
-					positionAnimation
-					startPosition={{
-						x: 200 * (random(1) + 3),
-						y: -500 * (random(1) + 1)
-					}}
-					endPosition={{
-						x: 200 * (random(1) + 3),
-						y: 300 - (random(1) + 300)
-					}}
-					startScale={random(1) + 0.8}
-					endScale={random(1) + 1.1}
-					endRotation={random(1) - 2}
-					startRotation={random(1) - 10}
-				/>
-
-				<PersonImage
-					startFrame={0}
-					endFrame={180}
-					path={'garden4.jpg'}
-					legend=''
-					proportion={[1, 1]}
-					width={1060 * 0.8}
-					height={707 * 0.8}
-					positionAnimation
-					startPosition={{
-						x: 400 * (random(1) + 3),
-						y: -100 * (random(1) + 1)
-					}}
-					endPosition={{
-						x: 200 * (random(1) + 3),
-						y: 600 - (random(1) + 300)
-					}}
-					startScale={random(1) + 0.8}
-					endScale={random(1) + 1.1}
-					endRotation={random(1) - 2}
-					startRotation={random(1) - 10}
-				/>
+							return (
+								<PersonImage
+									startFrame={0}
+									endFrame={180}
+									path={image.path}
+									legend=''
+									proportion={image.proportion}
+									width={1060}
+									height={707}
+									positionAnimation
+									endPosition={endPosition}
+									startPosition={startPosition}
+									startScale={scale.start}
+									endScale={scale.end}
+									startRotation={rotation.start}
+									endRotation={rotation.end}
+								/>
+							);
+						})
+					}
+				</div>
 
 				<Subtitle
 					showFrame={20}
